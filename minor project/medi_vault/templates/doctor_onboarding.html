@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% block title %}Doctor onboarding — MediVault{% endblock %}
+{% block content %}
+<div class="onboarding-wrapper">
+  <h1>Doctor onboarding</h1>
+
+  <div class="onboarding-steps">
+    <div class="step active" data-step="1">
+      <div class="step-dot">1</div>
+      <span>Profile</span>
+    </div>
+    <div class="step-line"></div>
+    <div class="step" data-step="2">
+      <div class="step-dot">2</div>
+      <span>Documents</span>
+    </div>
+    <div class="step-line"></div>
+    <div class="step" data-step="3">
+      <div class="step-dot">3</div>
+      <span>Selfie</span>
+    </div>
+    <div class="step-line"></div>
+    <div class="step" data-step="4">
+      <div class="step-dot">4</div>
+      <span>Submit</span>
+    </div>
+  </div>
+
+  <form id="onboarding-form" class="card" onsubmit="return false;">
+    <div class="step-panel active" data-panel="1">
+      <h2>Personal &amp; professional</h2>
+      <label>Full name</label>
+      <input type="text" name="fullName" required />
+      <label>Medical license number</label>
+      <input type="text" name="licenseNumber" required />
+      <label>Specialty</label>
+      <select name="specialty" required>
+        <option value="">Select…</option>
+        <option>General</option>
+        <option>Cardiology</option>
+        <option>Neurology</option>
+        <option>Oncology</option>
+        <option>Pediatrics</option>
+        <option>Radiology</option>
+        <option>Surgery</option>
+        <option>Other</option>
+      </select>
+      <label>Years of experience</label>
+      <input type="number" name="yearsExperience" min="0" required />
+      <label>Hospital / clinic name</label>
+      <input type="text" name="hospital" required />
+      <label>Hospital address</label>
+      <textarea name="hospitalAddress" rows="3" required></textarea>
+      <label>Hospital phone</label>
+      <input type="tel" name="hospitalPhone" required />
+      <button type="button" class="btn-next" data-next="2">Continue</button>
+    </div>
+
+    <div class="step-panel" data-panel="2">
+      <h2>Documents</h2>
+      <p>PDF or JPG, max 5MB each.</p>
+      <label>Medical license scan</label>
+      <div class="doc-upload-zone" data-target="license">
+        <input type="file" id="file-license" accept=".pdf,.jpg,.jpeg" hidden />
+        <span>Click to upload license</span>
+        <div class="upload-status" id="status-license"></div>
+      </div>
+      <label>Government ID scan</label>
+      <div class="doc-upload-zone" data-target="id">
+        <input type="file" id="file-id" accept=".pdf,.jpg,.jpeg" hidden />
+        <span>Click to upload ID</span>
+        <div class="upload-status" id="status-id"></div>
+      </div>
+      <input type="hidden" name="licenseDocRef" id="ref-license" />
+      <input type="hidden" name="idDocRef" id="ref-id" />
+      <button type="button" class="btn-next" data-next="3">Continue</button>
+    </div>
+
+    <div class="step-panel" data-panel="3">
+      <h2>Selfie</h2>
+      <video id="selfie-video" width="320" height="240" autoplay playsinline style="display:none;border-radius:8px;"></video>
+      <canvas id="selfie-canvas" width="320" height="240" style="display:none;"></canvas>
+      <img id="selfie-preview" alt="Selfie preview" />
+      <div>
+        <button type="button" id="btn-camera">Use camera</button>
+        <button type="button" id="btn-capture" style="display:none;">Capture</button>
+        <button type="button" id="btn-retake" style="display:none;">Retake</button>
+      </div>
+      <label>Or upload selfie (JPG)</label>
+      <input type="file" id="file-selfie" accept="image/jpeg" />
+      <div class="upload-status" id="status-selfie"></div>
+      <input type="hidden" name="selfieRef" id="ref-selfie" />
+      <button type="button" class="btn-next" data-next="4">Continue</button>
+    </div>
+
+    <div class="step-panel" data-panel="4">
+      <h2>Review &amp; submit</h2>
+      <div id="review-summary" class="review-box"></div>
+      <label class="certify">
+        <input type="checkbox" id="certify-check" required />
+        I certify all information is accurate
+      </label>
+      <button type="button" id="btn-submit-onboarding">Submit application</button>
+      <p id="onboarding-msg"></p>
+    </div>
+  </form>
+</div>
+{% endblock %}
+{% block scripts %}
+<script type="module" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='js/doctor_onboarding.js') }}"></script>
+{% endblock %}

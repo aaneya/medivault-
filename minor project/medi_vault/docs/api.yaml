@@ -1,0 +1,108 @@
+openapi: 3.0.3
+info:
+  title: MediVault API
+  version: 0.1.0
+servers:
+  - url: http://127.0.0.1:5000
+paths:
+  /health:
+    get:
+      summary: Liveness
+      responses:
+        "200":
+          description: OK
+  /api/auth/register:
+    post:
+      summary: Register (Firebase user + Firestore profile)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password, role]
+              properties:
+                email: { type: string }
+                password: { type: string }
+                role: { type: string, enum: [patient, doctor, admin] }
+                displayName: { type: string }
+      responses:
+        "200": { description: Created }
+  /api/auth/login:
+    post:
+      summary: Hint — use Firebase client SDK
+      responses:
+        "200": { description: Message }
+  /api/records:
+    get:
+      summary: List records (role-based)
+      security: [{ bearerAuth: [] }]
+      responses:
+        "200": { description: Record list }
+  /api/records/{recordId}:
+    get:
+      summary: Get one record
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - name: recordId
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200": { description: Record }
+  /api/records/{recordId}/signed-url:
+    get:
+      summary: Short-lived signed URL for file download
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - name: recordId
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200": { description: URL payload }
+  /api/records/{recordId}/verify:
+    get:
+      summary: Re-hash file and compare / optional chain check
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - name: recordId
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200": { description: Verification result }
+  /api/records/upload:
+    post:
+      summary: Upload record (multipart)
+      security: [{ bearerAuth: [] }]
+      responses:
+        "200": { description: Upload result }
+  /api/access-requests:
+    post:
+      summary: Doctor requests access
+      security: [{ bearerAuth: [] }]
+      responses:
+        "200": { description: Request id }
+  /api/access-requests/pending:
+    get:
+      summary: Patient lists pending requests
+      security: [{ bearerAuth: [] }]
+      responses:
+        "200": { description: Requests }
+  /api/access-requests/{reqId}:
+    patch:
+      summary: Patient approves or denies
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - name: reqId
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200": { description: OK }
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,74 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuth() { return request.auth != null; }
+    function userDoc() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+    function isRole(r) {
+      return isAuth() && userDoc().role == r;
+    }
+    function isOwner(uid) { return request.auth.uid == uid; }
+
+    function accessRequestDoc() {
+      return get(/databases/$(database)/documents/accessRequests/$(request.auth.uid + '_' + resource.data.patientId));
+    }
+    function hasApprovedAccess() {
+      return accessRequestDoc().data.status == 'approved';
+    }
+
+    match /users/{uid} {
+      allow read: if isOwner(uid) || isRole('admin');
+      allow write: if isOwner(uid);
+    }
+
+    match /patients/{uid} {
+      allow read: if isOwner(uid) || isRole('doctor') || isRole('admin');
+      allow write: if isOwner(uid) || isRole('admin');
+    }
+
+    match /doctors/{uid} {
+      allow read: if isAuth();
+      allow write: if isOwner(uid) || isRole('admin');
+    }
+
+    match /records/{recordId} {
+      allow read: if isAuth() && (
+        resource.data.patientId == request.auth.uid ||
+        isRole('admin') ||
+        (isRole('doctor') && hasApprovedAccess())
+      );
+      allow create: if isRole('doctor') || isRole('admin') || isRole('patient');
+      allow update: if resource.data.patientId == request.auth.uid || isRole('admin');
+      allow delete: if false;
+
+      match /hashLogs/{logId} {
+        allow read: if isAuth();
+        allow write: if isRole('admin');
+      }
+    }
+
+    match /accessRequests/{reqId} {
+      allow read: if isAuth() && (
+        resource.data.doctorId == request.auth.uid ||
+        resource.data.patientId == request.auth.uid
+      );
+      allow create: if isRole('doctor');
+      allow update: if resource.data.patientId == request.auth.uid;
+    }
+
+    match /auditLogs/{logId} {
+      allow read: if isRole('admin');
+      allow create: if isAuth();
+      allow update, delete: if false;
+    }
+
+    match /onboardingSubmissions/{uid} {
+      allow read: if request.auth.uid == uid || isRole('admin');
+      allow create: if request.auth.uid == uid && isRole('doctor');
+      allow update: if isRole('admin');
+      allow delete: if false;
+    }
+  }
+}

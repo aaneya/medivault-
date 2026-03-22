@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Doctor — MediVault{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>Doctor dashboard</h1>
+  <p id="auth-state">Checking session…</p>
+
+  <div class="charts-row">
+    <div class="chart-card">
+      <h3>Access requests</h3>
+      <div class="chart-wrap"><canvas id="chart-requests" height="200"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>Verification activity</h3>
+      <div class="chart-wrap"><canvas id="chart-verifications" height="200"></canvas></div>
+    </div>
+  </div>
+
+  <section>
+    <h2>Accessible records</h2>
+    <ul id="records"></ul>
+  </section>
+</div>
+{% endblock %}
+{% block scripts %}
+<script type="module" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='js/doctor.js') }}"></script>
+{% endblock %}

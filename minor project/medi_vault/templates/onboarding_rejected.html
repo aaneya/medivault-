@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Application update — MediVault{% endblock %}
+{% block content %}
+<div class="pending-screen">
+  <div class="icon">✕</div>
+  <h1>Application not approved</h1>
+  <p class="status-bad">{{ reason or "No reason provided." }}</p>
+  <p>You may resubmit from <a href="/onboarding">onboarding</a>.</p>
+</div>
+{% endblock %}

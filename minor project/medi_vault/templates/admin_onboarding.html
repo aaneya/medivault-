@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Admin — Onboarding{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>Pending doctor applications</h1>
+  <p id="admin-msg"></p>
+  <div id="admin-list"></div>
+</div>
+<div id="reject-modal" class="modal">
+  <div class="modal-inner">
+    <h3>Reject application</h3>
+    <textarea id="reject-reason" rows="3" placeholder="Reason"></textarea>
+    <button type="button" id="reject-confirm">Confirm reject</button>
+    <button type="button" id="reject-cancel">Cancel</button>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script type="module" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='js/admin_onboarding.js') }}"></script>
+{% endblock %}
