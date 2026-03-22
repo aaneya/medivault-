@@ -1,0 +1,111 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "records",
+      "queryScope": "Collection",
+      "fields": [
+        {
+          "fieldPath": "patientId",
+          "order": "Ascending"
+        },
+        {
+          "fieldPath": "isDeleted",
+          "order": "Ascending"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "Descending"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "records",
+      "queryScope": "Collection",
+      "fields": [
+        {
+          "fieldPath": "uploadedBy",
+          "order": "Ascending"
+        },
+        {
+          "fieldPath": "isDeleted",
+          "order": "Ascending"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "Descending"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "accessRequests",
+      "queryScope": "Collection",
+      "fields": [
+        {
+          "fieldPath": "patientId",
+          "order": "Ascending"
+        },
+        {
+          "fieldPath": "status",
+          "order": "Ascending"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "accessRequests",
+      "queryScope": "Collection",
+      "fields": [
+        {
+          "fieldPath": "doctorId",
+          "order": "Ascending"
+        },
+        {
+          "fieldPath": "requestedAt",
+          "order": "Descending"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "onboardingSubmissions",
+      "queryScope": "Collection",
+      "fields": [
+        {
+          "fieldPath": "reviewStatus",
+          "order": "Ascending"
+        },
+        {
+          "fieldPath": "submittedAt",
+          "order": "Descending"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "auditLogs",
+      "queryScope": "Collection",
+      "fields": [
+        {
+          "fieldPath": "actorId",
+          "order": "Ascending"
+        },
+        {
+          "fieldPath": "timestamp",
+          "order": "Descending"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "otp_sessions",
+      "queryScope": "Collection",
+      "fields": [
+        {
+          "fieldPath": "identifier",
+          "order": "Ascending"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "Descending"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

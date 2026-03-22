@@ -1,0 +1,68 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow authenticated users to read their own user document
+    match /users/{userId} {
+      allow read: if request.auth.uid == userId;
+      allow write: if false; // Managed by backend
+    }
+
+    // Patient profiles - readable by self and doctors with access
+    match /patients/{patientId} {
+      allow read: if request.auth.uid == patientId;
+      allow read: if request.auth.token.role == 'doctor' && exists(/databases/$(database)/documents/accessRequests/$(request.auth.uid)_$(patientId));
+      allow write: if false; // Managed by backend
+    }
+
+    // Doctor profiles - readable by all (public verification status)
+    match /doctors/{doctorId} {
+      allow read: if true;
+      allow write: if false; // Managed by backend
+    }
+
+    // Medical records
+    match /records/{recordId} {
+      allow read: if request.auth.uid == resource.data.patientId;
+      allow read: if request.auth.uid == resource.data.uploadedBy;
+      allow read: if request.auth.token.role == 'doctor' && exists(/databases/$(database)/documents/accessRequests/$(request.auth.uid)_$(resource.data.patientId));
+      allow read: if request.auth.token.role == 'admin';
+      allow write: if false; // Managed by backend
+
+      match /hashLogs/{logId} {
+        allow read: if parent.resource == null || parent.resource.data.patientId == request.auth.uid;
+        allow write: if false; // Managed by backend
+      }
+    }
+
+    // Access requests
+    match /accessRequests/{requestId} {
+      allow read: if request.auth.uid in [resource.data.doctorId, resource.data.patientId];
+      allow write: if false; // Managed by backend
+    }
+
+    // Onboarding submissions - only admins can read
+    match /onboardingSubmissions/{docId} {
+      allow read: if request.auth.token.role == 'admin';
+      allow read: if request.auth.uid == docId;
+      allow write: if false; // Managed by backend
+    }
+
+    // Audit logs - users can read their own
+    match /auditLogs/{logId} {
+      allow read: if request.auth.uid == resource.data.actorId;
+      allow read: if request.auth.token.role == 'admin';
+      allow write: if false; // Managed by backend
+    }
+
+    // OTP sessions - managed by backend only
+    match /otpSessions/{sessionId} {
+      allow read: if false;
+      allow write: if false;
+    }
+
+    // Default deny all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
