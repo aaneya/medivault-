@@ -1,0 +1,372 @@
+MEDIVAULT UI/UX - VISUAL GUIDE
+================================================================================
+
+COLOR PALETTE:
+  Primary Brand: Indigo (#4F46E5)
+  Success: Emerald (#10B981)
+  Danger: Red (#EF4444)
+  Warning: Amber (#F59E0B)
+  Text: Gray (#1F2937) / (#F3F4F6 on dark)
+  Background: White / Dark gray (#0F172A)
+
+TYPOGRAPHY:
+  Headings: Sora (Bold/SemiBold)
+  Body: DM Sans (Regular/Medium)
+  Code: JetBrains Mono
+
+================================================================================
+PAGE 1: HOME / LANDING PAGE
+================================================================================
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          NAVBAR (Sticky)                                    │
+│  Logo          Features  Security  About    [Login Button - Indigo]         │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           HERO SECTION                                      │
+│                                                                             │
+│           Secure Medical Records On Blockchain                             │
+│           Patient-controlled healthcare with HIPAA compliance              │
+│                                                                             │
+│          [Get Started - Indigo]  [Learn More - Ghost]                      │
+│                                                                             │
+│                          [Hero Image]                                       │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        FEATURES SECTION (4 columns)                         │
+│                                                                             │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐   │
+│  │    🔒        │  │    ✓         │  │    ⛓️       │  │    📋       │   │
+│  │  Patient     │  │   Doctor     │  │  Blockchain │  │   HIPAA     │   │
+│  │  Control     │  │ Verification │  │  Security   │  │ Compliant   │   │
+│  │              │  │              │  │             │  │             │   │
+│  │  Patients    │  │  Doctors are │  │  All data   │  │  Meets all  │   │
+│  │  approve     │  │  verified    │  │  hashed &   │  │  healthcare │   │
+│  │  access      │  │  before      │  │  stored on  │  │  standards  │   │
+│  └──────────────┘  └──────────────┘  └──────────────┘  └──────────────┘   │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          FOOTER                                             │
+│  Company | Legal | Privacy | Security | GitHub | Twitter | LinkedIn        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+================================================================================
+PAGE 2: LOGIN - STEP 1 (Phone/Email Entry)
+================================================================================
+
+                    ┌──────────────────────────────┐
+                    │      M E D I V A U L T       │
+                    └──────────────────────────────┘
+
+                    Welcome to MediVault
+                Secure Your Medical Records
+
+                   Select Your Role:
+                  
+                  ◉ Patient    ○ Doctor    ○ Admin
+
+              ┌─────────────────────────────┐
+              │ Enter Phone Number          │
+              │ +1 (555) 000-0000          │
+              └─────────────────────────────┘
+
+              ┌─────────────────────────────┐
+              │  Send OTP                   │
+              │  [Indigo Button]            │
+              └─────────────────────────────┘
+
+              Don't have an account?
+              [Register here]
+
+================================================================================
+PAGE 3: LOGIN - STEP 2 (OTP Verification)
+================================================================================
+
+                    ┌──────────────────────────────┐
+                    │      M E D I V A U L T       │
+                    └──────────────────────────────┘
+
+                Enter Verification Code
+            We sent a 6-digit code to your phone
+
+                  ┌──┐ ┌──┐ ┌──┐ ┌──┐ ┌──┐ ┌──┐
+                  │  │ │  │ │  │ │  │ │  │ │  │
+                  └──┘ └──┘ └──┘ └──┘ └──┘ └──┘
+
+                        00:59 remaining
+                    [Didn't receive? Resend]
+
+              ┌─────────────────────────────┐
+              │  Verify & Sign In           │
+              │  [Indigo Button]            │
+              └─────────────────────────────┘
+
+================================================================================
+PAGE 4: PATIENT DASHBOARD
+================================================================================
+
+┌──────────────┬────────────────────────────────────────────────────────────┐
+│              │                                                            │
+│  Dashboard   │  My Medical Records          [Upload New Record - Indigo] │
+│  My Records  │  ┌─────────────────────────────────────────┐             │
+│  Doctor      │  │ Blood Test Report                       │             │
+│  Access      │  │ Nov 15, 2024 | Dr. Sarah Johnson      │             │
+│  Verify      │  │ Status: Verified ✓                     │             │
+│  Settings    │  │ Hash: ab3f4d9e2c...   [Download] [Share]│             │
+│  Logout      │  │                                         │             │
+│              │  │ [Verify on Blockchain]                  │             │
+│              │  └─────────────────────────────────────────┘             │
+│              │  ┌─────────────────────────────────────────┐             │
+│              │  │ X-Ray Report                            │             │
+│              │  │ Nov 10, 2024 | Dr. Michael Lee         │             │
+│              │  │ Status: Verified ✓                     │             │
+│              │  │ Hash: 7f2e1a3b9c...   [Download] [Share]│             │
+│              │  │                                         │             │
+│              │  │ [Verify on Blockchain]                  │             │
+│              │  └─────────────────────────────────────────┘             │
+│              │                                                            │
+└──────────────┴────────────────────────────────────────────────────────────┘
+
+[Switch to "Doctor Access" or "Verification" tabs...]
+
+================================================================================
+PAGE 5: DOCTOR DASHBOARD
+================================================================================
+
+┌──────────────┬────────────────────────────────────────────────────────────┐
+│              │                                                            │
+│  Dashboard   │  Access Requests From Patients                            │
+│  Requests    │  ┌─────────────────────────────────────────┐             │
+│  Patients    │  │ John Doe                                │             │
+│  My Records  │  │ Requested 2 days ago                   │             │
+│  Activity    │  │ Records: Blood Test, X-Ray             │             │
+│  Settings    │  │                                         │             │
+│  Logout      │  │ [Approve - Emerald] [Reject - Red]     │             │
+│              │  └─────────────────────────────────────────┘             │
+│              │  ┌─────────────────────────────────────────┐             │
+│              │  │ Jane Smith                              │             │
+│              │  │ Requested 5 days ago                   │             │
+│              │  │ Records: Recent Labs, Prescriptions    │             │
+│              │  │                                         │             │
+│              │  │ [Approve - Emerald] [Reject - Red]     │             │
+│              │  └─────────────────────────────────────────┘             │
+│              │                                                            │
+│              │  APPROVED ACCESS:                                        │
+│              │  ┌─────────────────────────────────────────┐             │
+│              │  │ Alice Johnson      Approved: Nov 10    │             │
+│              │  │ 4 records   [View Records]              │             │
+│              │  │ [Revoke Access - Red]                   │             │
+│              │  └─────────────────────────────────────────┘             │
+│              │                                                            │
+└──────────────┴────────────────────────────────────────────────────────────┘
+
+================================================================================
+PAGE 6: ADMIN DASHBOARD
+================================================================================
+
+STAT CARDS (4 columns):
+┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐
+│ Pending      │ │ Verified     │ │ Total        │ │ Platform     │
+│ 12           │ │ Doctors: 234 │ │ Patients:    │ │ Records:     │
+│ [Amber]      │ │ [Green]      │ │ 1,856 [Blue] │ │ 45,678 [Ind] │
+└──────────────┘ └──────────────┘ └──────────────┘ └──────────────┘
+
+DOCTOR APPROVALS:
+┌────────────────────────────────────────────────────────────────┐
+│ Dr. Robert Chen - License: MD123456                            │
+│ Email: robert@hospital.com | Phone: +1-555-0123              │
+│ Hospital: City Hospital | Applied: Nov 10, 2024               │
+│                                                                │
+│ Documents: [View Degree] [View License] [View Affiliation]    │
+│ Photo: [View Selfie]                                          │
+│                                                                │
+│ Status: Pending [Amber]                                       │
+│                                                                │
+│ [Approve - Emerald]  [Reject - Red]                           │
+│ [Reason: _________________________]                            │
+└────────────────────────────────────────────────────────────────┘
+
+================================================================================
+PAGE 7: DOCTOR ONBOARDING (4-STEP WIZARD)
+================================================================================
+
+Progress: Step 1 ✓ → Step 2 (Current) → Step 3 → Step 4
+
+STEP 2: Upload Documents
+
+┌──────────────────────────────────────────────────────────────┐
+│                                                              │
+│  Medical Degree                                              │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │  📎 Drag and drop your degree PDF or image here      │   │
+│  │                                                       │   │
+│  │  [Or click to select from computer]                  │   │
+│  └──────────────────────────────────────────────────────┘   │
+│                                                              │
+│  Medical License                                             │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │  ✓ degree.pdf (2.3 MB)              [Remove]         │   │
+│  └──────────────────────────────────────────────────────┘   │
+│                                                              │
+│  Hospital Affiliation Letter                                 │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │  📎 Drag and drop your affiliation letter here       │   │
+│  │                                                       │   │
+│  │  [Or click to select from computer]                  │   │
+│  └──────────────────────────────────────────────────────┘   │
+│                                                              │
+│                    [Previous] [Next - Indigo]                │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
+
+================================================================================
+PAGE 8: DOCTOR ONBOARDING - STEP 3 (SELFIE)
+================================================================================
+
+                    Position your face in the circle
+
+                    ┌────────────────────┐
+                    │    ⭕ Camera Feed │
+                    │                    │
+                    │    [Face Here]     │
+                    │                    │
+                    └────────────────────┘
+
+                  [Take Photo - Indigo]
+                  [Try Again - Ghost]
+
+================================================================================
+PAGE 9: DOCTOR ONBOARDING - STEP 4 (REVIEW)
+================================================================================
+
+REVIEW YOUR APPLICATION:
+
+Personal Information ▼
+├─ Name: Dr. Robert Chen
+├─ Email: robert@hospital.com
+├─ License: MD123456
+└─ Hospital: City Hospital
+
+Documents ▼
+├─ Medical Degree: ✓ Uploaded
+├─ Medical License: ✓ Uploaded
+└─ Hospital Letter: ✓ Uploaded
+
+Selfie Verification ▼
+└─ ✓ Verified
+
+☑ I certify all information is accurate
+
+┌──────────────────────────────────┐
+│  Submit Application - Emerald   │
+│  [Button]                        │
+└──────────────────────────────────┘
+
+================================================================================
+PAGE 10: ONBOARDING STATUS
+================================================================================
+
+Pending Approval:
+┌────────────────────────────────────┐
+│           ⏳                         │
+│                                    │
+│   Application Pending              │
+│   [Amber Status Badge]             │
+│                                    │
+│   Your application is being        │
+│   reviewed. We'll notify you       │
+│   within 3-5 business days.        │
+│                                    │
+│   Submitted: Nov 15, 2024          │
+│   Check: robert@hospital.com       │
+│                                    │
+│   [Return to Home - Indigo]        │
+└────────────────────────────────────┘
+
+================================================================================
+RESPONSIVE DESIGN
+================================================================================
+
+MOBILE (< 640px):
+- Sidebars hidden, toggle with hamburger menu ☰
+- Cards stack vertically
+- Buttons full width (48px min height)
+- Single column layout
+- Larger fonts for readability
+
+TABLET (640px - 1024px):
+- Sidebar drawer (collapsible)
+- 2 column grid for cards
+- Touch-friendly spacing
+- Medium screen optimized
+
+DESKTOP (> 1024px):
+- Permanent sidebar
+- Multi-column layouts
+- Full feature set visible
+- Optimized for productivity
+
+================================================================================
+INTERACTIVE STATES
+================================================================================
+
+BUTTON STATES:
+Default    → Indigo background, white text
+Hover      → Darker indigo + shadow increase
+Active      → Darkest indigo + shadow decrease
+Loading    → Spinner animation
+Disabled   → Gray + 50% opacity
+
+FORM INPUTS:
+Default    → Gray border
+Focused    → Indigo border + glow shadow
+Filled     → Dark text value shown
+Error      → Red border + error message
+Success    → Green checkmark
+
+CARDS:
+Default    → Subtle shadow
+Hover      → Increased shadow + slight lift
+Selected   → Indigo border highlight
+
+================================================================================
+DARK MODE
+================================================================================
+
+Automatically applies:
+- White text on dark backgrounds
+- Dark gray (#1F2937) to near black (#0F172A)
+- Lighter gray borders (#374151)
+- Dark gray cards (#111827)
+- Adjusted shadows and glows
+- Toggle in navbar (top-right)
+
+================================================================================
+ANIMATIONS
+================================================================================
+
+Page Load       → Fade in + slide down (200ms)
+Modal Open      → Scale from center (300ms)
+Toast Show      → Slide in from bottom (200ms)
+Button Hover    → Scale 1.02x + shadow (200ms)
+Loading         → Spinner rotation (infinite)
+Success         → Checkmark animate (300ms)
+
+================================================================================
+ACCESSIBILITY
+================================================================================
+
+✓ WCAG 2.1 AA Compliant
+✓ 4.5:1 color contrast minimum
+✓ Keyboard navigation (Tab, Enter, Esc)
+✓ Screen reader labels (ARIA)
+✓ Focus rings (visible 2px indigo)
+✓ Minimum 16px base font size
+✓ Skip navigation links
+✓ Form validation messages
+✓ Error states clearly indicated
+
+================================================================================
