@@ -32,18 +32,24 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [role, setRole] = useState<string | null>(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-      setUser(firebaseUser);
-      if (firebaseUser) {
-        const idTokenResult = await firebaseUser.getIdTokenResult();
-        setRole((idTokenResult.claims as any)?.role || 'patient');
-      } else {
-        setRole(null);
-      }
-      setLoading(false);
-    });
+    try {
+      const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+        setUser(firebaseUser);
+        if (firebaseUser) {
+          const idTokenResult = await firebaseUser.getIdTokenResult();
+          setRole((idTokenResult.claims as any)?.role || 'patient');
+        } else {
+          setRole(null);
+        }
+        setLoading(false);
+      });
 
-    return unsubscribe;
+      return unsubscribe;
+    } catch (error) {
+      console.log('[v0] Auth not available - using demo mode');
+      setLoading(false);
+      return () => {};
+    }
   }, []);
 
   const register = async (email: string, password: string) => {
